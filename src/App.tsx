@@ -1,8 +1,8 @@
-import React, { useReducer, useEffect, Dispatch } from "react";
+import React, { useReducer, useEffect,  } from "react";
 import { motion } from "framer-motion";
 import Header from "./Components/Header";
-import EnterField from "./Components/Enterfield";
-import TasksSection from "./Components/Tasksection";
+//import EnterField from "./Components/Enterfield";
+//import TasksSection from "./Components/Tasksection";
 
 import "./App.css";
 
