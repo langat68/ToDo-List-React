@@ -88,7 +88,7 @@ const App: React.FC = () => {
             y: { duration: 0.5 },
           }}
         >
-          <EnterField
+          {/* <EnterField
             tasksData={state.tasksData}
             saveTasks={JSON.stringify(state.tasksData)}
             darkMode={state.darkMode}
@@ -100,8 +100,8 @@ const App: React.FC = () => {
             setCompleteStatus={(id: string) => dispatch({ type: "TOGGLE_COMPLETE", payload: id })}
             clearAllCompleted={() => dispatch({ type: "CLEAR_COMPLETED" })}
             tasksData={state.tasksData}
-            setTasksData={(tasks: Task[]) => tasks.forEach(task => dispatch({ type: "ADD_TASK", payload: task }))}
-          />
+            setTasksData={(tasks: Task[]) => tasks.forEach(task => dispatch({ type: "ADD_TASK", payload: task }))} */}
+          {/* /> */}
         </motion.div>
         {state.tasksData.length > 1 ? (
           <motion.p
