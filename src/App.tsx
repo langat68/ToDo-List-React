@@ -102,7 +102,7 @@ const App: React.FC = () => {
                 onChange={() => toggleTaskCompletion(todo.id)}
               />
               <span className={todo.completed ? 'completed' : ''}>{todo.task}</span>
-              <button onClick={() => deleteTask(todo.id)}>Delete</button>
+              <button className="delete-task" onClick={() => deleteTask(todo.id)}>x</button>
             </li>
           ))}
         </ul>
