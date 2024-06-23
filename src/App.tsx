@@ -13,6 +13,15 @@ type ActionType =
   | { type: 'TOGGLE_TASK_COMPLETION'; payload: number }
   | { type: 'CLEAR_COMPLETED' };
 
+const initialTodos: Todo[] = [
+  { id: 1, task: 'Complete online JavaScript course', completed: true },
+  { id: 2, task: 'Jog around the park 3x', completed: false },
+  { id: 3, task: '10 minutes meditation', completed: false },
+  { id: 4, task: 'Read for 1 hour', completed: false },
+  { id: 5, task: 'Pick up groceries', completed: false },
+  { id: 6, task: 'Complete Todo App on Frontend Mentor', completed: false },
+];
+
 const todoReducer = (state: Todo[], action: ActionType): Todo[] => {
   switch (action.type) {
     case 'ADD_TASK':
@@ -38,7 +47,7 @@ const todoReducer = (state: Todo[], action: ActionType): Todo[] => {
 };
 
 const App: React.FC = () => {
-  const [todos, dispatch] = useReducer(todoReducer, []);
+  const [todos, dispatch] = useReducer(todoReducer, initialTodos);
   const [newTask, setNewTask] = useState('');
   const [theme, setTheme] = useState('dark');
   const [filter, setFilter] = useState<'All' | 'Active' | 'Completed'>('All');
