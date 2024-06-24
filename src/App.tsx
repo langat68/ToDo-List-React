@@ -1,18 +1,21 @@
 import React, { useReducer, useState } from 'react';
 import './App.css';
 
+// Define the Todo interface
 interface Todo {
   id: number;
   task: string;
   completed: boolean;
 }
 
+// Define the possible action types for the reducer
 type ActionType =
   | { type: 'ADD_TASK'; payload: string }
   | { type: 'DELETE_TASK'; payload: number }
   | { type: 'TOGGLE_TASK_COMPLETION'; payload: number }
   | { type: 'CLEAR_COMPLETED' };
 
+// Initial list of todos
 const initialTodos: Todo[] = [
   { id: 1, task: 'Complete online JavaScript course', completed: true },
   { id: 2, task: 'Jog around the park 3x', completed: false },
@@ -22,6 +25,7 @@ const initialTodos: Todo[] = [
   { id: 6, task: 'Complete Todo App on Frontend Mentor', completed: false },
 ];
 
+// Reducer function to handle todo actions
 const todoReducer = (state: Todo[], action: ActionType): Todo[] => {
   switch (action.type) {
     case 'ADD_TASK':
@@ -47,11 +51,12 @@ const todoReducer = (state: Todo[], action: ActionType): Todo[] => {
 };
 
 const App: React.FC = () => {
-  const [todos, dispatch] = useReducer(todoReducer, initialTodos);
-  const [newTask, setNewTask] = useState('');
-  const [theme, setTheme] = useState('dark');
-  const [filter, setFilter] = useState<'All' | 'Active' | 'Completed'>('All');
+  const [todos, dispatch] = useReducer(todoReducer, initialTodos); // Manage todos with useReducer
+  const [newTask, setNewTask] = useState(''); // State for the new task input
+  const [theme, setTheme] = useState('dark'); // State for theme (dark/light)
+  const [filter, setFilter] = useState<'All' | 'Active' | 'Completed'>('All'); // State for todo filter
 
+  // Add a new task
   const addTask = (): void => {
     if (newTask.trim() !== '') {
       dispatch({ type: 'ADD_TASK', payload: newTask });
@@ -59,18 +64,22 @@ const App: React.FC = () => {
     }
   };
 
+  // Delete a task
   const deleteTask = (id: number): void => {
     dispatch({ type: 'DELETE_TASK', payload: id });
   };
 
+  // Toggle task completion
   const toggleTaskCompletion = (id: number): void => {
     dispatch({ type: 'TOGGLE_TASK_COMPLETION', payload: id });
   };
 
+  // Clear completed tasks
   const clearCompletedTasks = (): void => {
     dispatch({ type: 'CLEAR_COMPLETED' });
   };
 
+  // Filter todos based on filter state
   const filteredTodos = todos.filter(todo => {
     if (filter === 'Active') return !todo.completed;
     if (filter === 'Completed') return todo.completed;
